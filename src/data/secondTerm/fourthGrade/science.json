@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "subject": "Science",
+    "title": "Circulatory System",
+    "description": "Lesson about the circulatory system.",
+    "image": "/public/images/circulatory-system.png",
+    "model": "/public/models/circulatory-system.glb"
+  }
+]

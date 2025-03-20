@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عرض النموذج 3D</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        padding: 20px;
+        margin: 0;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+    </style>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const term = urlParams.get("term");
+      const grade = urlParams.get("grade");
+      const subject = urlParams.get("subject");
+      const id = urlParams.get("id");
+
+      async function fetchModel() {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/api/${term}/model/${grade}/${subject}/${id}`
+          );
+          const data = await response.json();
+
+          const modelViewer = document.createElement("model-viewer");
+          modelViewer.setAttribute("src", `http://localhost:5000${data.model}`);
+          modelViewer.setAttribute("alt", "3D Model");
+          modelViewer.setAttribute("auto-rotate", "");
+          modelViewer.setAttribute("camera-controls", "");
+          modelViewer.style.width = "100%";
+          modelViewer.style.height = "100vh";
+
+          document.body.appendChild(modelViewer);
+        } catch (err) {
+          document.body.innerHTML = "<h2>فشل في تحميل النموذج</h2>";
+        }
+      }
+
+      window.onload = fetchModel;
+    </script>
+  </body>
+</html>

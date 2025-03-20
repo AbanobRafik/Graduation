@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عرض الدرس</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f4f8;
+        padding: 20px;
+        margin: 0;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+      }
+
+      #lesson {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.8;
+      }
+
+      #lesson h2 {
+        color: #0077b6;
+        font-size: 24px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #0077b6;
+        padding-bottom: 5px;
+      }
+
+      #lesson p {
+        font-size: 18px;
+        color: #555;
+        text-align: justify;
+        margin-bottom: 15px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+
+      model-viewer {
+        display: block;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+    </style>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <h1>معلومات الدرس</h1>
+    <div id="lesson"></div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const term = urlParams.get("term");
+      const grade = urlParams.get("grade");
+      const subject = urlParams.get("subject");
+      const id = urlParams.get("id");
+
+      async function fetchLesson() {
+        try {
+          const response = await fetch(
+            `http://localhost:5000/api/${term}/${grade}/${subject}/${id}`
+          );
+          const data = await response.json();
+
+          const lessonDiv = document.getElementById("lesson");
+          lessonDiv.innerHTML = ""; // تفريغ أي محتوى سابق
+
+          // عنوان الدرس
+          const titleEl = document.createElement("h2");
+          titleEl.textContent = data.title;
+          lessonDiv.appendChild(titleEl);
+
+          // وصف الدرس (HTML)
+          const descDiv = document.createElement("div");
+          descDiv.innerHTML = data.description; // لو محتاج تعرضه كنص فقط استبدل بـ textContent
+          lessonDiv.appendChild(descDiv);
+
+          // صورة الدرس
+          const imgEl = document.createElement("img");
+          imgEl.src = `http://localhost:5000${data.image}`;
+          imgEl.alt = "Lesson Image";
+          lessonDiv.appendChild(imgEl);
+
+          // عرض 3D Model
+          const modelViewer = document.createElement("model-viewer");
+          modelViewer.setAttribute("src", `http://localhost:5000${data.model}`);
+          modelViewer.setAttribute("alt", "3D Model");
+          modelViewer.setAttribute("auto-rotate", "");
+          modelViewer.setAttribute("disable-zoom", "");
+          modelViewer.setAttribute("disable-pan", "");
+          modelViewer.setAttribute("disable-tap", "");
+          modelViewer.style.width = "100%";
+          modelViewer.style.height = "500px";
+          lessonDiv.appendChild(modelViewer);
+
+          // زر "عرض النموذج بالحجم الكامل"
+          const linkContainer = document.createElement("div");
+          linkContainer.style.textAlign = "center";
+          linkContainer.style.marginTop = "20px";
+
+          const viewLink = document.createElement("a");
+          viewLink.href = `view-model.html?term=${term}&grade=${grade}&subject=${subject}&id=${id}`;
+          viewLink.textContent = "عرض النموذج بالحجم الكامل";
+          viewLink.style.display = "inline-block";
+          viewLink.style.padding = "10px 20px";
+          viewLink.style.backgroundColor = "#0077b6";
+          viewLink.style.color = "white";
+          viewLink.style.borderRadius = "5px";
+          viewLink.style.textDecoration = "none";
+
+          linkContainer.appendChild(viewLink);
+          lessonDiv.appendChild(linkContainer);
+        } catch (err) {
+          document.getElementById("lesson").textContent = "فشل في تحميل الدرس";
+        }
+      }
+
+      window.onload = fetchLesson;
+    </script>
+  </body>
+</html>
