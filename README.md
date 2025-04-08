@@ -49,7 +49,7 @@
 - **Parameters**:
     - `:grade` (e.g., fourthGrade, fifthGrade)
     - `:term` (e.g., firstTerm, secondTerm)
-    - `:subject` (e.g., math.json, science.json)
+    - `:subject` (e.g., math, science)
 - **Response**:
     ```json
     ["unit1", "unit2", "unit3"]
@@ -64,7 +64,7 @@
 - **Parameters**:
     - `:grade` (e.g., fourthGrade, fifthGrade)
     - `:term` (e.g., firstTerm, secondTerm)
-    - `:subject` (e.g., math.json, science.json)
+    - `:subject` (e.g., math, science)
     - `:unit` (e.g., unit1, unit2)
 - **Response**:
     ```json
@@ -83,7 +83,7 @@
 - **Parameters**:
     - `:grade` (e.g., fourthGrade, fifthGrade)
     - `:term` (e.g., firstTerm, secondTerm)
-    - `:subject` (e.g., math.json, science.json)
+    - `:subject` (e.g., math, science)
     - `:unit` (e.g., unit1, unit2)
     - `:id` (lesson ID, e.g., 1, 2)
 - **Response**:
@@ -105,7 +105,7 @@
 - **Parameters**:
     - `:grade` (e.g., fourthGrade, fifthGrade)
     - `:term` (e.g., firstTerm, secondTerm)
-    - `:subject` (e.g., math.json, science.json)
+    - `:subject` (e.g., math, science)
     - `:unit` (e.g., unit1, unit2)
     - `:id` (lesson ID, e.g., 1, 2)
 - **Response**:
