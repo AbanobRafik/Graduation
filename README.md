@@ -188,31 +188,33 @@
             ```
 
 ### 6. Get a Specific Lesson by ID
-    - **Request**:
-            ```bash
-            GET /api/fourthGrade/firstTerm/science/unit1/lesson/1
-            ```
-    - **Response**:
-            ```json
-            {
-                    "id": 1,
-                    "title": "Lesson 1",
-                    "content": "Lesson content here",
-                    "model": "model_file_path_here"
-            }
-            ```
+
+- **Request**:
+    ```bash
+    GET /api/fourthGrade/firstTerm/science/unit1/lesson/1
+    ```
+- **Response**:
+    ```json
+    {
+        "id": 1,
+        "title": "Lesson 1",
+        "content": "Lesson content here",
+        "model": "model_file_path_here"
+    }
+    ```
 
 ### 7. Get the Model of a Specific Lesson by ID
-    - **Request**:
-            ```bash
-            GET /api/fourthGrade/firstTerm/science/unit1/lesson/1/model
-            ```
-    - **Response**:
-            ```json
-            {
-                    "model": "model_file_path_here"
-            }
-            ```
+
+- **Request**:
+    ```bash
+    GET /api/fourthGrade/firstTerm/science/unit1/lesson/1/model
+    ```
+- **Response**:
+    ```json
+    {
+        "model": "model_file_path_here"
+    }
+    ```
 ---
 
-This is your updated API documentation in markdown format. Feel free to copy it as needed!
+This now aligns all examples in a consistent format!
