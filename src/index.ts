@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import firstTermRoutes from "./routes/firstTerm";
-import secondTermRoutes from "./routes/secondTerm";
+import lessonsRoutes from "./routes/Lesson";
 
 const app = express();
 const PORT = 5000;
@@ -10,14 +9,13 @@ const PORT = 5000;
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-// السماح بالوصول إلى الملفات الثابتة
+// Serve static files like images and models
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 app.use("/models", express.static(path.join(__dirname, "../public/models")));
 
-// تحديد المسارات
-app.use("/api/first-term", firstTermRoutes);
-app.use("/api/second-term", secondTermRoutes);
+// Use lessonsRoutes for all /api routes
+app.use("/api", lessonsRoutes);
 
 app.listen(PORT, () => {
-  console.log(`الخادم يعمل على http://localhost:${PORT}`);
+  console.log(`Server working on http://localhost:${PORT}`);
 });

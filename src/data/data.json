@@ -1,0 +1,134 @@
+{
+  "Grade4": {
+    "FirstTerm": {
+      "Science": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الجهاز الهضمي",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الجهاز الهضمي",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/digestive_system.jpg",
+                "model": "/models/digestive_system_model.glb"
+              },
+              {
+                "id": 2,
+                "title": "الدرس الثاني",
+                "description": "<p>محتوى الدرس 2</p>",
+                "image": "/images/digestive_system_lesson2.jpg",
+                "model": "/models/digestive_system_model2.glb"
+              }
+            ]
+          },
+          {
+            "unit": "unit2",
+            "title": "الجهاز التنفسي",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الجهاز التنفسي",
+                "description": "<p>محتوى الدرس 2</p>",
+                "image": "/images/respiratory_system.jpg",
+                "model": "/models/respiratory_system_model.glb"
+              }
+            ]
+          }
+        ]
+      },
+      "Math": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الجمع",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الدرس الأول",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/fraction_lesson1.jpg",
+                "model": "/models/fraction_model1.glb"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "SecondTerm": {
+      "Science": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الطاقة",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الطاقة",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/energy.jpg",
+                "model": "/models/energy_model.glb"
+              }
+            ]
+          }
+        ]
+      },
+      "Math": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الطرح",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الدرس الأول",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/subtraction_lesson1.jpg",
+                "model": "/models/subtraction_model1.glb"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Grade5": {
+    "FirstTerm": {
+      "Science": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الجهاز العصبي",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الجهاز العصبي",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/nervous_system.jpg",
+                "model": "/models/nervous_system_model.glb"
+              }
+            ]
+          }
+        ]
+      },
+      "Math": {
+        "units": [
+          {
+            "unit": "unit1",
+            "title": "الكسور العشرية",
+            "lessons": [
+              {
+                "id": 1,
+                "title": "الدرس الأول",
+                "description": "<p>محتوى الدرس 1</p>",
+                "image": "/images/decimal_fractions_lesson1.jpg",
+                "model": "/models/decimal_fraction_model1.glb"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
