@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: Educational API
+  version: 1.0.0
+  description: API to retrieve grades, terms, subjects, units, lessons, titles, and questions.
+
+servers:
+  - url: http://localhost:5000/api
+
+paths:
+  /:
+    get:
+      summary: Fetch educational data or list of categories
+      description: >
+        Use query parameters to fetch specific educational data or use the `list` parameter
+        to retrieve lists of available grades, terms, subjects, or units.
+      parameters:
+        - in: query
+          name: grades
+          description: Grade name (required for terms, subjects, units list or lesson data)
+          schema:
+            type: string
+            enum: [Grade4, Grade5]
+        - in: query
+          name: term
+          description: Term name (required for subjects, units list or lesson data)
+          schema:
+            type: string
+            enum: [FirstTerm, SecondTerm]
+        - in: query
+          name: subject
+          description: Subject name (required for units list or lesson data)
+          schema:
+            type: string
+            enum: [Science, Math]
+        - in: query
+          name: unit
+          description: Unit name (required for lesson data)
+          schema:
+            type: string
+            enum: [unit1, unit2]
+        - in: query
+          name: lessonId
+          description: Lesson ID (optional, used to fetch specific lesson)
+          schema:
+            type: integer
+        - in: query
+          name: list
+          description: |
+            Retrieve a list of available data. Use with other parameters as needed:
+            - `grades`: returns all available grades
+            - `terms`: requires `grades`
+            - `subjects`: requires `grades` and `term`
+            - `units`: requires `grades`, `term`, and `subject`
+          schema:
+            type: string
+            enum: [grades, terms, subjects, units]
+      responses:
+        "200":
+          description: Successful response with data or list
+        "400":
+          description: Missing or invalid query parameters
+        "404":
+          description: Data not found
+        "500":
+          description: Internal server error
+
+  /titles:
+    get:
+      summary: Get lesson titles
+      parameters:
+        - in: query
+          name: grades
+          required: true
+          schema:
+            type: string
+            enum: [Grade4, Grade5]
+        - in: query
+          name: term
+          required: true
+          schema:
+            type: string
+            enum: [FirstTerm, SecondTerm]
+        - in: query
+          name: subject
+          required: true
+          schema:
+            type: string
+            enum: [Science, Math]
+        - in: query
+          name: unit
+          required: true
+          schema:
+            type: string
+            enum: [unit1, unit2]
+      responses:
+        "200":
+          description: List of titles
+        "400":
+          description: Missing parameters
+        "404":
+          description: Unit not found
+
+  /questions:
+    get:
+      summary: Get lesson questions
+      parameters:
+        - in: query
+          name: grades
+          required: true
+          schema:
+            type: string
+            enum: [Grade4, Grade5]
+        - in: query
+          name: term
+          required: true
+          schema:
+            type: string
+            enum: [FirstTerm, SecondTerm]
+        - in: query
+          name: subject
+          required: true
+          schema:
+            type: string
+            enum: [Science, Math]
+        - in: query
+          name: unit
+          required: true
+          schema:
+            type: string
+            enum: [unit1, unit2]
+        - in: query
+          name: lessonId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of questions
+        "400":
+          description: Missing parameters
+        "404":
+          description: Lesson not found

@@ -65,31 +65,37 @@ Fetches a list of available data for grades, terms, subjects, or units.
 **Response**:  
 Returns a JSON object with the requested list.
 
-#### Examples:
-- **Grades**:
-    ```json
-    {
-        "grades": ["Grade4", "Grade5"]
-    }
-    ```
-- **Terms (for Grade4)**:
-    ```json
-    {
-        "terms": ["FirstTerm", "SecondTerm"]
-    }
-    ```
-- **Subjects (for Grade4, FirstTerm)**:
-    ```json
-    {
-        "subjects": ["Science", "Math"]
-    }
-    ```
-- **Units (for Grade4, FirstTerm, Science)**:
-    ```json
-    {
-        "units": ["unit1", "unit2"]
-    }
-    ```
+---
+
+**Parameters**:
+- **grades**: (e.g., `Grade4`, `Grade5`)
+- **term**: (e.g., `FirstTerm`, `SecondTerm`)
+- **subject**: (e.g., `Math`, `Science`)
+- **unit**: (e.g., `unit1`, `unit2`)
+
+**Description**:  
+Fetches model data for the specified grade, term, subject, and unit.
+
+**Response**:  
+Returns the requested model data.
+
+---
+
+### 5. Fetch Titles Data
+**URL**:  
+`GET /api/titles?grades={grade}&term={term}&subject={subject}&unit={unit}`
+
+**Parameters**:
+- **grades**: (e.g., `Grade4`, `Grade5`)
+- **term**: (e.g., `FirstTerm`, `SecondTerm`)
+- **subject**: (e.g., `Math`, `Science`)
+- **unit**: (e.g., `unit1`, `unit2`)
+
+**Description**:  
+Fetches title data for the specified grade, term, subject, and unit.
+
+**Response**:  
+Returns the requested title data.
 
 ---
 
@@ -149,55 +155,21 @@ Returns data for `lesson 1` in `unit1`, `Science`, `Grade4`, `FirstTerm`.
 
 ---
 
-### 7. Get List of All Grades
+### 7. Get Models Data
 **Request**:  
-`GET http://localhost:5000/api/?list=grades`
+`GET http://localhost:5000/api/models?grades=Grade4&term=FirstTerm&subject=Science&unit=unit1`
 
 **Response**:  
-```json
-{
-    "grades": ["Grade4", "Grade5"]
-}
-```
+Returns model data for `unit1` in `Science`, `Grade4`, `FirstTerm`.
 
 ---
 
-### 8. Get List of Terms for a Specific Grade
+### 8. Get Titles Data
 **Request**:  
-`GET http://localhost:5000/api/?list=terms&grades=Grade4`
+`GET http://localhost:5000/api/titles?grades=Grade4&term=FirstTerm&subject=Science&unit=unit1`
 
 **Response**:  
-```json
-{
-    "terms": ["FirstTerm", "SecondTerm"]
-}
-```
-
----
-
-### 9. Get List of Subjects for a Specific Grade and Term
-**Request**:  
-`GET http://localhost:5000/api/?list=subjects&grades=Grade4&term=FirstTerm`
-
-**Response**:  
-```json
-{
-    "subjects": ["Science", "Math"]
-}
-```
-
----
-
-### 10. Get List of Units for a Specific Grade, Term, and Subject
-**Request**:  
-`GET http://localhost:5000/api/?list=units&grades=Grade4&term=FirstTerm&subject=Science`
-
-**Response**:  
-```json
-{
-    "units": ["unit1", "unit2"]
-}
-```
+Returns title data for `unit1` in `Science`, `Grade4`, `FirstTerm`.
 
 ---
 
